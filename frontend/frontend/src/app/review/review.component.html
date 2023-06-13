@@ -1,0 +1,77 @@
+<div class="container mt-5">
+    <div class="card" style="padding: 10px;">
+
+        <form #reviewRoomForm="ngForm" (ngSubmit)="reviewRoom(reviewRoomForm)">
+            <div class="input">
+                <label> Customer ID </label>
+                <input type="text"
+                ngModel
+                name="customer_id"
+                id="customer_id"
+                class="form-control mb-3">
+            </div>
+
+            <div class="input" >
+                <input type="submit"
+                value="all booked Rooms" class="btn btn-primary w-30 mb-3">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-2 custyle">
+        <table class="table table-striped custab">
+        <thead>
+            <tr>
+                <th>customer_Id</th>
+                <th>room_Id</th>
+                <th>checkout_date</th>
+            </tr>
+        </thead>
+        </table>
+        </div>
+    </div>
+
+
+
+
+<div class="container mt-5">
+    <div class="card" style="padding: 20px;">
+
+        <form #reviewRoomForm="ngForm" (ngSubmit)="reviewRoom(reviewRoomForm)">
+            <div class="input">
+                <label> Customer ID </label>
+                <input type="text"
+                ngModel
+                name="customer_id"
+                id="customer_id"
+                class="form-control mb-3">
+            </div>
+            <div class="input">
+                <label> Room ID </label>
+                <input type="text"
+                ngModel
+                name="room_id"
+                id="room_id"
+                class="form-control mb-3">
+            </div>
+
+            <div class="input">
+                <label> Review Text </label>
+                <input type="text"
+                ngModel
+                name="reviewText"
+                id="reviewText"
+                class="form-control mb-3">
+            </div>
+
+            <div class="input">
+                <input type="submit"
+                value="review" class="btn btn-primary w-100">
+            </div>
+        </form>
+    </div>
+</div>
