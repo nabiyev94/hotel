@@ -3,12 +3,10 @@ package com.imse.hotel.sql.service;
 import com.imse.hotel.sql.model.Customer;
 import com.imse.hotel.sql.model.Room;
 import com.imse.hotel.sql.model.RoomReviewing;
-import com.imse.hotel.sql.repository.BookingCartRepository;
 import com.imse.hotel.sql.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +15,8 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @Autowired
-    private BookingCartRepository bookingCartRepository;
-
-
     public Customer registCustomer(Customer tempCustomer) throws Exception {
 
-
-        this.bookingCartRepository.save(tempCustomer.getBookingCart());
 
         return this.customerRepository.save(tempCustomer);
         /*

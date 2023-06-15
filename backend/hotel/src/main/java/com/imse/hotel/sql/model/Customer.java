@@ -32,11 +32,6 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<RoomReviewing> reviewedRooms = new ArrayList<>();
 
-
-    @OneToOne
-    @JoinColumn(name = "cartId")
-    private BookingCart bookingCart;
-
     public Customer() {
     }
 
@@ -115,15 +110,6 @@ public class Customer {
 
     public void setReviewedRooms(List<RoomReviewing> reviewedRooms) {
         this.reviewedRooms = reviewedRooms;
-    }
-
-
-    public BookingCart getBookingCart() {
-        return bookingCart;
-    }
-
-    public void setBookingCart(BookingCart bookingCart) {
-        this.bookingCart = bookingCart;
     }
 
     public int getAge() {

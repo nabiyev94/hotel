@@ -19,9 +19,6 @@ public class DataMigrating {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private BookingCartRepository bookingCartRepository;
-
-    @Autowired
     private CustomerMongoDbRepository customerMongoDbRepository;
 
     @Autowired
@@ -82,18 +79,12 @@ public class DataMigrating {
         for(int i = 0; i < listOfCustomers.size(); ++i){
             CustomerMongoDb customerMongoDb = new CustomerMongoDb();
             Customer customer = listOfCustomers.get(i);
-            BookingCart bookingCart = customer.getBookingCart();
-            BookingsCartMongoDb cartMongoDb = new BookingsCartMongoDb();
 
             customerMongoDb.setFirstName(customer.getFirstName());
             customerMongoDb.setLastName(customer.getLastName());
             customerMongoDb.setPassword(customer.getPassword());
             customerMongoDb.setBirthday(customer.getBirthday());
             customerMongoDb.setCutomerEmailAdress(customer.getCutomerEmailAdress());
-
-            cartMongoDb.setRoomQuantity(bookingCart.getRoomQuantity());
-            cartMongoDb.setTotalPrice(bookingCart.getTotalPrice());
-            customerMongoDb.setCartMongoDb(cartMongoDb);
             customerMongoDb.setCustomerId(Integer.toString(customer.getCustomerID()));
 
             this.customerMongoDbRepository.save(customerMongoDb);

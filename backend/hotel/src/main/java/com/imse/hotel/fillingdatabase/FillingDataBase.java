@@ -25,9 +25,6 @@ public class FillingDataBase {
     private AdminstratorRepository adminstratorRepository;
 
     @Autowired
-    private BookingCartRepository bookingCartRepository;
-
-    @Autowired
     private CategoryRepository categoryRepository;
 
     @Autowired
@@ -82,11 +79,9 @@ public class FillingDataBase {
         Integer[] listOfQuantities = new Integer[] {4, 2, 5, 6, 1, 3};
 
         Customer customer = new Customer();
-        BookingCart bookingCart = new BookingCart();
         int temp = 1985;
         for(int i = 0 ; i < 20; ++i){
             customer = new Customer();
-            bookingCart = new BookingCart();
 
             int firstCustomerName = new Random().nextInt(firstNames.length);
             int lastCustomerName = new Random().nextInt(lastNames.length);
@@ -96,17 +91,11 @@ public class FillingDataBase {
             int price = new Random().nextInt(roomPrices.length);
             int quantity = new Random().nextInt(listOfQuantities.length);
 
-            bookingCart.setTotalPrice(roomPrices[price]);
-            bookingCart.setRoomQuantity(listOfQuantities[quantity]);
-
             customer.setFirstName(firstNames[firstCustomerName]);
             customer.setLastName(lastNames[lastCustomerName]);
             customer.setCutomerEmailAdress(emailAdresses.get(customerEmailAdress));
             customer.setPassword(passwords.get(customerPassword));
             customer.setBirthday(dates[customerBirthday]);
-            customer.setBookingCart(bookingCart);
-
-            this.bookingCartRepository.save(bookingCart);
             this.customerRepository.save(customer);
         }
     }
@@ -283,8 +272,7 @@ public class FillingDataBase {
 
             Customer customer = this.customerRepository.findById(listOfCustomerIDs.get(customerIdIndex)).get();
             Room room = this.roomRepository.findById(listOfRoomsIDs.get(roomIndex)).get();
-            //Long index = Long.valueOf(i);
-            //Room room = this.roomRepository.findById(index).get();
+
 
             roomReviewing.setCustomer(customer);
             roomReviewing.setRoom(room);
@@ -353,7 +341,6 @@ public class FillingDataBase {
 
     public void deleteAllData(){
         this.roomReviewingRepository.deleteAll();
-        this.bookingCartRepository.deleteAll();
         this.bookedRoomRepository.deleteAll();
         this.adminstratorRepository.deleteAll();
         this.customerRepository.deleteAll();
